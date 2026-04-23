@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOK Library — Depth of Knowledge Resource Hub | ISCA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --isca-navy: #1a2e5a;
+      --isca-teal: #00a99d;
+      --isca-orange: #f7941d;
+      --dok1: #2d5fa6;
+      --dok2: #00a99d;
+      --dok3: #f7941d;
+      --dok4: #8b3fa8;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+
+    .app-header {
+      background: linear-gradient(135deg, var(--isca-navy) 0%, #1a3f5a 100%);
+      color: white;
+      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .header-branding h1 { font-family: 'Plus Jakarta Sans'; font-size: 20px; font-weight: 700; }
+    .header-branding p { font-size: 12px; opacity: 0.8; }
+
+    .header-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-btn { padding: 0.6rem 1.2rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .nav-btn.active { background: white; color: var(--isca-navy); }
+
+    .app-container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+    .section-title { font-family: 'Plus Jakarta Sans'; font-size: 28px; font-weight: 800; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 2rem; max-width: 700px; }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .filter-section { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .filter-label { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-tertiary); }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .filter-chip { padding: 0.5rem 0.875rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+    .filter-chip.active { background: var(--isca-teal); color: white; border-color: var(--isca-teal); }
+    .filter-input { width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 13px; font-family: 'Inter'; }
+    .filter-input:focus { outline: none; border-color: var(--isca-teal); }
+
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+
+    .resource-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+    .resource-card:hover { box-shadow: 0 10px 40px rgba(26, 46, 90, 0.12); transform: translateY(-4px); }
+    .resource-card.open { box-shadow: 0 20px 60px rgba(26, 46, 90, 0.15); }
+
+    .card-header { padding: 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .card-header.h1 { background: rgba(45, 95, 166, 0.08); border-left: 4px solid var(--dok1); }
+    .card-header.h2 { background: rgba(0, 169, 157, 0.08); border-left: 4px solid var(--dok2); }
+    .card-header.h3 { background: rgba(247, 148, 29, 0.08); border-left: 4px solid var(--dok3); }
+    .card-header.h4 { background: rgba(139, 63, 168, 0.08); border-left: 4px solid var(--dok4); }
+
+    .card-title { font-family: 'Plus Jakarta Sans'; font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+    .card-toggle { font-size: 20px; color: var(--text-tertiary); transition: transform 0.2s; }
+    .resource-card.open .card-toggle { transform: rotate(180deg); }
+
+    .card-body { display: none; padding: 1.5rem; border-top: 1px solid var(--border-color); gap: 1rem; flex-direction: column; }
+    .resource-card.open .card-body { display: flex; }
+
+    .badge { font-size: 10px; padding: 0.375rem 0.75rem; border-radius: 12px; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+    .badge.subject { background: var(--bg-primary); color: var(--dok1); border: 1px solid rgba(45, 95, 166, 0.2); }
+    .badge.dok { color: white; font-weight: 700; }
+    .badge.dok1 { background: var(--dok1); }
+    .badge.dok2 { background: var(--dok2); }
+    .badge.dok3 { background: var(--dok3); }
+    .badge.dok4 { background: var(--dok4); }
+
+    .content-text { font-size: 13px; color: var(--text-secondary); line-height: 1.7; white-space: pre-line; }
+    .why-box { background: var(--bg-primary); border-left: 4px solid var(--isca-teal); padding: 1rem; border-radius: 0 8px 8px 0; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    .lesson-designer { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .designer-panel { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; }
+    .designer-panel h3 { font-family: 'Plus Jakarta Sans'; font-size: 16px; font-weight: 700; margin-bottom: 1rem; }
+
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.5rem; display: block; }
+    input[type="text"], select, textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 13px; font-family: 'Inter'; }
+    textarea { resize: vertical; min-height: 120px; }
+
+    .button { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; background: var(--isca-teal); color: white; width: 100%; }
+    .button:hover { background: #00886f; }
+
+    .recommendations { background: var(--bg-primary); border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+    .recommendations h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.75rem; }
+    .recommendation-item { padding: 0.75rem; background: white; border-radius: 6px; margin-bottom: 0.5rem; font-size: 12px; color: var(--text-secondary); border-left: 4px solid; }
+    .recommendation-item.dok1 { border-left-color: var(--dok1); }
+    .recommendation-item.dok2 { border-left-color: var(--dok2); }
+    .recommendation-item.dok3 { border-left-color: var(--dok3); }
+    .recommendation-item.dok4 { border-left-color: var(--dok4); }
+    .recommendation-item strong { display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.25rem; }
+
+    .dok-section { margin-bottom: 2rem; padding: 1.5rem; border-radius: 12px; border-left: 4px solid; }
+    .dok-section.dok1 { background-color: rgba(45, 95, 166, 0.05); border-left-color: var(--dok1); }
+    .dok-section.dok2 { background-color: rgba(0, 169, 157, 0.05); border-left-color: var(--dok2); }
+    .dok-section.dok3 { background-color: rgba(247, 148, 29, 0.05); border-left-color: var(--dok3); }
+    .dok-section.dok4 { background-color: rgba(139, 63, 168, 0.05); border-left-color: var(--dok4); }
+    .dok-section h4 { font-family: 'Plus Jakarta Sans'; font-weight: 700; margin-bottom: 0.75rem; }
+
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .video-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+    .video-card:hover { box-shadow: 0 10px 40px rgba(26, 46, 90, 0.12); }
+    .video-thumbnail { width: 100%; height: 160px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; }
+    .video-info { padding: 1rem; }
+    .video-title { font-family: 'Plus Jakarta Sans'; font-size: 13px; font-weight: 700; margin-bottom: 0.5rem; }
+    .video-meta { font-size: 11px; color: var(--text-tertiary); margin-bottom: 0.75rem; }
+    .video-btn { display: inline-block; padding: 0.5rem 1rem; background: var(--isca-teal); border: none; border-radius: 6px; font-size: 11px; color: white; cursor: pointer; font-weight: 600; }
+    .video-btn:hover { background: #00886f; }
+
+    .assessment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .assessment-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; transition: all 0.3s; }
+    .assessment-card:hover { box-shadow: 0 10px 40px rgba(26, 46, 90, 0.12); }
+    .assessment-title { font-family: 'Plus Jakarta Sans'; font-size: 14px; font-weight: 700; margin-bottom: 0.75rem; }
+    .assessment-description { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+    .assessment-btn { display: inline-block; padding: 0.5rem 1rem; background: var(--isca-teal); border: none; border-radius: 6px; font-size: 11px; color: white; cursor: pointer; font-weight: 600; }
+
+    .no-results { text-align: center; padding: 3rem 1rem; color: var(--text-tertiary); }
+    .app-footer { background: var(--isca-navy); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem; margin-top: 3rem; font-size: 11px; }
+
+    @media (max-width: 1024px) { .lesson-designer { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .resources-grid, .video-grid, .assessment-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="header-container">
+    <div class="header-branding">
+      <div style="font-size: 24px; margin-right: 0.5rem;">📚</div>
+      <div>
+        <h1>DOK Library</h1>
+        <p>Depth of Knowledge Resource Hub for 9–12 Instruction</p>
+      </div>
+    </div>
+    <div class="header-nav">
+      <button class="nav-btn active" onclick="switchView('resources')">Resources</button>
+      <button class="nav-btn" onclick="switchView('designer')">Lesson Designer</button>
+      <button class="nav-btn" onclick="switchView('videos')">Videos</button>
+      <button class="nav-btn" onclick="switchView('assess')">Assessment</button>
+    </div>
+  </div>
+</div>
+
+<div class="app-container">
+
+  <!-- RESOURCES -->
+  <div id="view-resources" class="view active">
+    <h2 class="section-title">Scaffolds & Strategies Library</h2>
+    <p class="section-subtitle">27 research-backed scaffolds across all DOK levels. Search by keyword, filter by subject or DOK level, click to expand.</p>
+
+    <div class="filter-section">
+      <div class="filter-group">
+        <label class="filter-label">Search Scaffolds</label>
+        <input type="text" class="filter-input" id="searchBox" placeholder="e.g., 'error analysis', 'sentence frames', 'think aloud'" onkeyup="performSearch()">
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Subject Area</label>
+        <div class="filter-chips">
+          <span class="filter-chip active" data-filter="subject" data-value="all">All</span>
+          <span class="filter-chip" data-filter="subject" data-value="ELA">ELA</span>
+          <span class="filter-chip" data-filter="subject" data-value="Math">Math</span>
+          <span class="filter-chip" data-filter="subject" data-value="Science">Science</span>
+          <span class="filter-chip" data-filter="subject" data-value="History">History</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">DOK Level</label>
+        <div class="filter-chips">
+          <span class="filter-chip active" data-filter="dok" data-value="all">All</span>
+          <span class="filter-chip" data-filter="dok" data-value="1">DOK 1</span>
+          <span class="filter-chip" data-filter="dok" data-value="2">DOK 2</span>
+          <span class="filter-chip" data-filter="dok" data-value="3">DOK 3</span>
+          <span class="filter-chip" data-filter="dok" data-value="4">DOK 4</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="resourcesContainer" class="resources-grid"></div>
+    <div id="noResults" class="no-results" style="display:none;">No scaffolds match your search.</div>
+  </div>
+
+  <!-- LESSON DESIGNER -->
+  <div id="view-designer" class="view">
+    <h2 class="section-title">Intelligent Lesson Designer</h2>
+    <p class="section-subtitle">Describe what you're teaching. The system recommends scaffolds and generates a complete, actionable lesson plan.</p>
+
+    <div class="lesson-designer">
+      <div class="designer-panel">
+        <h3>What Are You Teaching?</h3>
+
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <select id="designSubject" onchange="updateLessonDesigner()">
+            <option value="">Select Subject</option>
+            <option value="ELA">ELA</option>
+            <option value="Math">Math</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+            <option value="Government">Government</option>
+            <option value="Tech">Tech</option>
+            <option value="PE">PE</option>
+            <option value="SPED">SPED</option>
+            <option value="Academic Advisory">Academic Advisory</option>
+            <option value="ELD">ELD</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Topic/Skill</label>
+          <input type="text" id="designTopic" placeholder="e.g., 'argument essay', 'quadratic equations', 'photosynthesis'" onkeyup="updateLessonDesigner()">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Grade Level</label>
+          <select id="designGrade">
+            <option value="">Select Grade</option>
+            <option value="9-10">9-10</option>
+            <option value="11-12">11-12</option>
+            <option value="9-12">9-12</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Delivery Method</label>
+          <select id="designDelivery">
+            <option value="">Select</option>
+            <option value="Engageli Synchronous">Engageli Synchronous</option>
+            <option value="Canvas Asynchronous">Canvas Asynchronous</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+
+        <button class="button" onclick="downloadLessonPlan()">📥 Download Lesson Plan (.docx)</button>
+      </div>
+
+      <div class="designer-panel">
+        <h3>Recommended Scaffolds</h3>
+        <div id="scaffoldRecommendations" class="recommendations">
+          <p style="color: var(--text-tertiary); font-size: 12px;">Select subject and topic to see recommendations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <h3 style="font-family: 'Plus Jakarta Sans'; font-size: 18px; font-weight: 700; margin-bottom: 1.5rem;">Build Your Lesson Progression</h3>
+
+      <div class="dok-section dok1">
+        <h4>📌 DOK 1: Recall & Reproduction</h4>
+        <textarea id="dok1" placeholder="What will students do? (system will auto-populate with suggestions)"></textarea>
+      </div>
+
+      <div class="dok-section dok2">
+        <h4>🎯 DOK 2: Skill & Concept</h4>
+        <textarea id="dok2" placeholder="What will students do? (system will auto-populate with suggestions)"></textarea>
+      </div>
+
+      <div class="dok-section dok3">
+        <h4>⚡ DOK 3: Strategic Thinking</h4>
+        <textarea id="dok3" placeholder="What will students do? (system will auto-populate with suggestions)"></textarea>
+      </div>
+
+      <div class="dok-section dok4">
+        <h4>🚀 DOK 4: Extended Thinking</h4>
+        <textarea id="dok4" placeholder="What will students do? (system will auto-populate with suggestions)"></textarea>
+      </div>
+
+      <button class="button" style="margin-top: 1.5rem;" onclick="downloadLessonPlan()">📥 Download Complete Lesson Plan (.docx)</button>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div id="view-videos" class="view">
+    <h2 class="section-title">Video Library</h2>
+    <p class="section-subtitle">ISCA faculty demonstration videos. All videos available to all teachers.</p>
+
+    <div id="videosContainer" class="video-grid"></div>
+  </div>
+
+  <!-- ASSESSMENT -->
+  <div id="view-assess" class="view">
+    <h2 class="section-title">Assessment Toolkit</h2>
+    <p class="section-subtitle">Complete, ready-to-use rubrics, templates, and exemplars aligned to each DOK level.</p>
+
+    <div id="assessContainer" class="assessment-grid"></div>
+  </div>
+
+</div>
+
+<div class="app-footer">
+  Insight Schools of California · DOK Library · Strengthening Rigor in 9–12 Virtual Instruction
+</div>
+
+<script>
+// ===== SCAFFOLD DATABASE =====
+const scaffolds = [
+  { id: 's1', title: 'Breaking Down the Prompt', dok: 1, subject: 'Math', teacher: 'Guide students: 1) Identify the task, 2) Identify what information is given, 3) Identify what the question is asking. Annotate problems live in Engageli using think-aloud, or have students highlight important numbers, identify the operation/relationship, identify the question, then solve.', why: 'Helps students separate content from computation, translate words into equations, and identify the actual mathematical task.' },
+  { id: 's2', title: 'Think Aloud Modeling', dok: 1, subject: 'ELA', teacher: 'Use language stems at each phase: Understanding ("I notice... The question is..."), Planning ("I think the strategy is..."), Solving ("Next step..."), Checking ("Does this make sense?"). Model live in Engageli using chat or annotation tools.', why: 'Makes invisible thinking visible. Experts automatically interpret problems; students need to see this process modeled.' },
+  { id: 's3', title: 'Chunk Multi-Step Problems', dok: 1, subject: 'Science', teacher: 'Provide all steps: Identify → Plan → Solve → Explain. Post chunking template in Canvas or share on Engageli. As students master each chunk, gradually remove support.', why: 'Over time, students internalize breaking down multi-step problems individually.' },
+  { id: 's4', title: 'Guided Annotation & Highlighting', dok: 1, subject: 'ELA', teacher: 'Teach color-coding: Yellow = main idea, Blue = details, Circle = unfamiliar words, ? = questions. Model live in Engageli, provide marked-up example, guide through one together, release to independent practice.', why: 'Turns passive reading into active engagement. Marking text forces close reading.' },
+  { id: 's5', title: 'Quick Polls & Formative Checks', dok: 1, subject: 'Math', teacher: 'Use Engageli polling for recall checks: "What is 25% of 80?", "True or False?", multiple choice. Review results immediately to adjust instruction and identify misconceptions.', why: 'Quick feedback loops keep students engaged and provide data to differentiate in real-time.' },
+  { id: 's6', title: 'Vocabulary in Context', dok: 1, subject: 'Science', teacher: 'Pre-teach vocabulary: Word, Definition, Example, Non-Example. Post vocabulary banks in Canvas or Engageli for reference. Have students create examples and non-examples.', why: 'Multiple entry points reduce language barriers that block content learning.' },
+  { id: 's7', title: 'Turn Computation Into Context', dok: 2, subject: 'Math', teacher: 'Start with DOK 1 equation (2x + 5 = 17) then add scenario: "A service charges $5 + $2/item. Bill was $17. How many items?" Present bare equation first, then reveal context. Ask: "What changes?"', why: 'Context shifts from "what do I do?" to "what does this mean?" Meaning improves retention.' },
+  { id: 's8', title: 'Guided Questions', dok: 2, subject: 'History', teacher: 'Ask targeted questions beyond recall: "How does X relate to Y?", "Why did this happen?", "What would happen if...?" Post in Canvas discussions.', why: 'Bridges knowing → using by prompting application and explanation.' },
+  { id: 's9', title: 'Structured Graphic Organizers', dok: 2, subject: 'ELA', teacher: 'Provide templates: Claim→Evidence→Explanation, Given Info→Strategy→Why→Solution. Share in Canvas or Engageli. Model one, release to students.', why: 'Reduce cognitive overload while prompting deeper thinking.' },
+  { id: 's10', title: 'Sentence Frames', dok: 2, subject: 'Science', teacher: 'Provide frames requiring application: "_____ is important because _____, which results in _____." Post on slides or Canvas.', why: 'Structure academic thinking and language.' },
+  { id: 's11', title: 'Structured Problem Solving Frames', dok: 2, subject: 'Math', teacher: 'Provide steps: 1) What do I know? 2) What am I finding? 3) What strategy? 4) Solve 5) Explain. Include in all assignments.', why: 'Breaks complexity into manageable parts.' },
+  { id: 's12', title: 'Provide Strategy Banks', dok: 2, subject: 'Math', teacher: 'Build visual reference of strategies (Factoring, Quadratic Formula, Graphing). Keep posted in Engageli or Canvas.', why: 'Builds independence and bridges to DOK 3.' },
+  { id: 's13', title: 'The DOK Ladder (Layered Questions)', dok: 3, subject: 'Science', teacher: 'Layer questions: 1) What do you notice? (DOK 1) 2) What does it mean? (DOK 2) 3) Why does it matter? (DOK 3). Isolate one cognitive task per layer.', why: 'Transparency supports students. Build understanding before tackling higher thinking.' },
+  { id: 's14', title: 'Visual Representations', dok: 3, subject: 'Math', teacher: 'Use multiple representations: Graph, Table, Equation, Context. Have students translate between forms and explain meaning.', why: 'Abstract ideas become concrete. Students see patterns that are hard to grasp through words alone.' },
+  { id: 's15', title: 'Error Analysis Tasks', dok: 3, subject: 'Math', teacher: 'Show incorrect work. Ask: "Which step is wrong?", "Why?", "How do we fix it?" Share samples in Engageli or Canvas discussions.', why: 'Students learn from existing thinking. Focus on understanding and reasoning.' },
+  { id: 's16', title: 'Signal Words & Sentence Frames', dok: 3, subject: 'ELA', teacher: 'Use genre-specific frames: Argument ("My position is... because... Therefore..."), Cause/Effect ("As a result of..., which ultimately..."), Compare ("Both address... However...").', why: 'Strengthen argumentation and layered responses.' },
+  { id: 's17', title: 'Justification Prompts', dok: 3, subject: 'Science', teacher: 'Require reasoning: "Why does this work?", "How do you know?", "What assumptions?" Build into every assignment.', why: 'Shift students from doing → understanding.' },
+  { id: 's18', title: 'Argumentation (CER)', dok: 3, subject: 'History', teacher: 'Require: Claim (conclusion), Evidence (support), Reasoning (why evidence proves claim). Use in Canvas assignments and Engageli discussions.', why: 'Structured path to higher-order thinking across all disciplines.' },
+  { id: 's19', title: 'Collaborative Reasoning', dok: 3, subject: 'ELA', teacher: 'Use Think-Pair-Share or Jigsaws. Think individually, Pair/discuss in breakout, Share with group. Scaffold with frames.', why: 'Build understanding together, hear alternatives, refine reasoning with peers.' },
+  { id: 's20', title: 'Strategy Anchors', dok: 3, subject: 'Math', teacher: 'Create permanent visual references (posters, slides, sidebars) of key strategies. Students reference anytime.', why: 'Support without teacher dependence. Builds self-sufficient learners.' },
+  { id: 's21', title: 'Multiple Solution Strategies', dok: 3, subject: 'Science', teacher: 'Design tasks requiring comparison: "Solve two ways. Which is more efficient?", "Design two experiments. Which is more reliable?" Have students present and justify.', why: 'Pushes into analysis, comparison, and evaluation.' },
+  { id: 's22', title: 'Graph–Equation–Context Connections', dok: 3, subject: 'Math', teacher: 'Pair representations: Equation ↔ Graph ↔ Table ↔ Context. Ask students to translate between forms and explain meaning.', why: 'Multiple entry points deepen understanding.' },
+  { id: 's23', title: 'Guided Inquiry Prompts', dok: 4, subject: 'Science', teacher: 'Embed open-ended prompts: "What patterns do you notice?", "How would your solution change if...?", "What assumptions are you making?" Use in async Canvas assignments.', why: 'Support independence and metacognition without reducing complexity.' },
+  { id: 's24', title: 'Constrained Innovation Task', dok: 4, subject: 'Science', teacher: 'Provide real-world problem with defined constraints, require original solutions. "Design a water filter with only these materials. How does it work?"', why: 'Constraints reduce cognitive overload, allowing focus on synthesis.' },
+  { id: 's25', title: 'Iteration & Revision Cycles', dok: 4, subject: 'ELA', teacher: 'Build in cycles: Draft → Peer Review (Engageli) → Revise (Canvas) → Present → Publish. Scaffold each cycle with rubrics and exemplars.', why: 'Encourages sustained inquiry. Complex thinking develops over time.' },
+  { id: 's26', title: 'Capstone Projects & Synthesis', dok: 4, subject: 'History', teacher: 'Design culminating project requiring synthesis: Documentary analyzing multiple factors, Position paper with 10+ sources, Policy proposal. Break into milestones in Canvas.', why: 'Synthesizes learning, builds agency, demonstrates mastery.' },
+  { id: 's27', title: 'Peer Critique & Feedback Protocols', dok: 4, subject: 'ELA', teacher: 'Teach protocol: Glow (what works), Grow (improve), Goal (next step). Use in Engageli breakout reviews with frames: "I appreciated...", "I was curious...", "I wonder if..."', why: 'Builds feedback skills, supports revision, normalizes critique.' }
+];
+
+const videos = [
+  { id: 'v1', title: 'Breaking Down Word Problems', dok: 1, creator: 'Peter Bither', url: 'https://drive.google.com/file/d/11m_CWn36xezmeaxuPuwAYDp6BuLSHZBv/view' },
+  { id: 'v2', title: 'Think Aloud Modeling', dok: 1, creator: 'Cynthia Owen', url: 'https://drive.google.com/file/d/1A1VEfKLR3wkJ9z7mrXuvmGm8nwbxrL8d/view' },
+  { id: 'v3', title: 'Chunking Complex Tasks', dok: 1, creator: 'Katy Ayesiga', url: 'https://drive.google.com/file/d/1hC6cAsQY6-AWi8S8vyYBXyVCCZDCpClN/view' },
+  { id: 'v4', title: 'Graphic Organizers for Learning', dok: 2, creator: 'Madeline Pace', url: 'https://drive.google.com/file/d/1zHtj_yGZ3gGJT1OmH54iOgq3mKR8cEC7/view' },
+  { id: 'v5', title: 'DOK Ladder Strategy', dok: 3, creator: 'Faculty Collective', url: 'https://docs.google.com/presentation/d/1H9-Q83UAPMe9PQUS-jcIYfcoNwpvEEbaHNJv2p9y5nE/view' },
+  { id: 'v6', title: 'Visual Representations in Math', dok: 3, creator: 'Sho Nakamura', url: 'https://drive.google.com/file/d/1zu7KPh8Zs03pm0spOSQ5Zlb-x_PJId8H/view' },
+  { id: 'v7', title: 'Think-Pair-Share Protocol', dok: 3, creator: 'Marsha Jackson', url: 'https://drive.google.com/file/d/1zfdmRQk8ASB5x_eMmEthDfk2CYvzLbOx/view' },
+  { id: 'v8', title: 'Jigsaw Protocol for Groups', dok: 3, creator: 'Gabriel Villegas', url: 'https://drive.google.com/file/d/1Z7ujvXkihicH30-a75Viy1H6in1b1Wnq/view' }
+];
+
+const assessments = [
+  { id: 'a1', type: 'Rubric', dok: 1, title: 'DOK 1 Recall Rubric', desc: 'Assess recall, identification, and definitions.' },
+  { id: 'a2', type: 'Template', dok: 2, title: 'DOK 2 Application Template', desc: 'Guide students through applying knowledge.' },
+  { id: 'a3', type: 'Rubric', dok: 3, title: 'DOK 3 Strategic Thinking Rubric', desc: 'Evaluate argumentation and reasoning.' },
+  { id: 'a4', type: 'Exemplar', dok: 3, title: 'Student Exemplar: Analysis Essay', desc: 'High-quality DOK 3 work sample.' },
+  { id: 'a5', type: 'Rubric', dok: 4, title: 'DOK 4 Capstone Rubric', desc: 'Comprehensive synthesis and real-world rubric.' },
+  { id: 'a6', type: 'Template', dok: 4, title: 'DOK 4 Project Proposal', desc: 'Student planning for extended projects.' }
+];
+
+// ===== RENDER FUNCTIONS =====
+function renderScaffolds(filtered = scaffolds) {
+  const container = document.getElementById('resourcesContainer');
+  container.innerHTML = filtered.map(s => `
+    <div class="resource-card" onclick="this.classList.toggle('open')">
+      <div class="card-header h${s.dok}">
+        <div>
+          <div class="card-title">${s.title}</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span class="badge subject">${s.subject}</span>
+            <span class="badge dok dok${s.dok}">DOK ${s.dok}</span>
+          </div>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary);">How to Implement</div>
+        <div class="content-text">${s.teacher}</div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary); margin-top: 0.75rem;">Why This Works</div>
+        <div class="why-box">${s.why}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  document.getElementById('noResults').style.display = filtered.length === 0 ? 'block' : 'none';
+}
+
+function performSearch() {
+  const query = document.getElementById('searchBox').value.toLowerCase().trim();
+  const subjectFilter = document.querySelector('[data-filter="subject"].active')?.dataset.value || 'all';
+  const dokFilter = document.querySelector('[data-filter="dok"].active')?.dataset.value || 'all';
+  
+  let filtered = scaffolds;
+  
+  if (query) {
+    filtered = filtered.filter(s => 
+      s.title.toLowerCase().includes(query) ||
+      s.teacher.toLowerCase().includes(query) ||
+      s.why.toLowerCase().includes(query)
+    );
+  }
+  
+  if (subjectFilter !== 'all') {
+    filtered = filtered.filter(s => s.subject === subjectFilter);
+  }
+  
+  if (dokFilter !== 'all') {
+    filtered = filtered.filter(s => s.dok === parseInt(dokFilter));
+  }
+  
+  renderScaffolds(filtered);
+}
+
+function renderVideos() {
+  const container = document.getElementById('videosContainer');
+  container.innerHTML = videos.map(v => `
+    <div class="video-card">
+      <div class="video-thumbnail"></div>
+      <div class="video-info">
+        <div class="video-title">${v.title}</div>
+        <div class="video-meta">👤 ${v.creator} | DOK ${v.dok}</div>
+        <a href="${v.url}" target="_blank" class="video-btn">Watch Video ↗</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAssessments() {
+  const container = document.getElementById('assessContainer');
+  container.innerHTML = assessments.map(a => `
+    <div class="assessment-card">
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+        <span class="badge dok dok${a.dok}">DOK ${a.dok}</span>
+        <span class="badge subject" style="background: var(--bg-primary); color: var(--dok1);">${a.type}</span>
+      </div>
+      <div class="assessment-title">${a.title}</div>
+      <div class="assessment-description">${a.desc}</div>
+      <button class="assessment-btn" onclick="downloadAssessment('${a.id}', '${a.title}')">📥 Download (.docx)</button>
+    </div>
+  `).join('');
+}
+
+// ===== LESSON DESIGNER =====
+const lessonProgressions = {
+  'argument essay': ['s9', 's16', 's18', 's19'],
+  'quadratic equations': ['s1', 's7', 's14', 's22'],
+  'photosynthesis': ['s6', 's8', 's10', 's17'],
+  'primary source analysis': ['s4', 's8', 's9', 's13'],
+  'essay writing': ['s4', 's9', 's10', 's16'],
+  'word problems': ['s1', 's3', 's11', 's12'],
+  'reading comprehension': ['s2', 's4', 's9', 's13'],
+  'goal setting': ['s3', 's11', 's25', 's26'],
+  'mindsets': ['s2', 's6', 's8', 's13'],
+  'vocabulary': ['s6', 's9', 's10', 's16']
+};
+
+const progressionExamples = {
+  'argument essay': {
+    dok1: 'Students identify claim, evidence, and reasoning in provided model essays. Annotate texts, highlighting thesis and counterarguments. Define key vocabulary: thesis, claim, evidence, counterargument.',
+    dok2: 'Students organize their own argument using a graphic organizer: Claim → 3 pieces of evidence → reasoning. Complete sentence frames: "My position is... because... For example..."',
+    dok3: 'Students analyze multiple perspectives on a controversial topic. Compare evidence quality across sources. Write full argument paragraph using CER. Address one counterargument.',
+    dok4: 'Students write complete position paper (1500+ words) synthesizing 5+ sources. Develop sophisticated thesis. Include 4+ body paragraphs. Address multiple counterarguments. Revise based on peer feedback.'
+  },
+  'quadratic equations': {
+    dok1: 'Students identify components of quadratic equations: a, b, c coefficients. Distinguish quadratic from linear equations. Solve simple quadratics (x² = 16) by taking square roots.',
+    dok2: 'Students solve quadratics using multiple methods: factoring, quadratic formula, completing the square, graphing. Choose appropriate method for different forms.',
+    dok3: 'Students compare efficiency of solution methods. Analyze discriminant to determine number of solutions. Solve application problems requiring quadratic setup.',
+    dok4: 'Students design real-world scenarios modeled by quadratic equations. Test models with data. Analyze how changes affect solutions. Present optimization challenge.'
+  },
+  'photosynthesis': {
+    dok1: 'Students identify inputs (sunlight, water, CO2) and outputs (glucose, oxygen). Label chloroplast diagrams. Define vocabulary. Match reactants/products to equation.',
+    dok2: 'Students create diagrams explaining light reactions and Calvin Cycle. Explain how light energy converts to chemical energy. Use graphic organizer: Input → Reactions → Output.',
+    dok3: 'Students analyze how light intensity, CO2, temperature affect photosynthesis rate. Compare photosynthesis and cellular respiration. Evaluate experimental data.',
+    dok4: 'Students design and conduct experiments testing photosynthesis factors. Analyze data and propose mechanisms. Propose applications in biofuel or crop optimization.'
+  }
+};
+
+function updateLessonDesigner() {
+  const subject = document.getElementById('designSubject').value;
+  const topic = document.getElementById('designTopic').value.toLowerCase().trim();
+  
+  if (!subject || !topic) {
+    document.getElementById('scaffoldRecommendations').innerHTML = '<p style="color: var(--text-tertiary); font-size: 12px;">Select subject and topic to see recommendations.</p>';
+    return;
+  }
+  
+  // Find matching scaffolds
+  let recommendedIds = [];
+  for (const [key, ids] of Object.entries(lessonProgressions)) {
+    if (topic.includes(key) || key.includes(topic)) {
+      recommendedIds = ids;
+      break;
+    }
+  }
+  
+  if (recommendedIds.length === 0) {
+    recommendedIds = scaffolds.filter(s => s.subject === subject).slice(0, 4).map(s => s.id);
+  }
+  
+  const recommended = recommendedIds.map(id => scaffolds.find(s => s.id === id)).filter(Boolean);
+  
+  const html = recommended.map(s => `
+    <div class="recommendation-item dok${s.dok}">
+      <strong>${s.title}</strong>
+      <span>DOK ${s.dok}</span>
+    </div>
+  `).join('');
+  
+  document.getElementById('scaffoldRecommendations').innerHTML = html || '<p style="color: var(--text-tertiary);">No specific recommendations found.</p>';
+  
+  // Populate progression examples
+  const ex = progressionExamples[topic];
+  if (ex) {
+    document.getElementById('dok1').value = ex.dok1;
+    document.getElementById('dok2').value = ex.dok2;
+    document.getElementById('dok3').value = ex.dok3;
+    document.getElementById('dok4').value = ex.dok4;
+  } else {
+    document.getElementById('dok1').value = '';
+    document.getElementById('dok2').value = '';
+    document.getElementById('dok3').value = '';
+    document.getElementById('dok4').value = '';
+  }
+}
+
+async function downloadLessonPlan() {
+  const subject = document.getElementById('designSubject').value;
+  const topic = document.getElementById('designTopic').value;
+  const grade = document.getElementById('designGrade').value;
+  const delivery = document.getElementById('designDelivery').value;
+  const dok1 = document.getElementById('dok1').value;
+  const dok2 = document.getElementById('dok2').value;
+  const dok3 = document.getElementById('dok3').value;
+  const dok4 = document.getElementById('dok4').value;
+  
+  if (!subject || !topic) {
+    alert('Please select subject and enter topic.');
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/download-lesson', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subject, topic, grade, delivery, dok1, dok2, dok3, dok4 })
+    });
+    
+    if (response.ok) {
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${topic.replace(/\s+/g, '_')}_Lesson_Plan.docx`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Download failed. Make sure the server is running on localhost:3000');
+  }
+}
+
+async function downloadAssessment(id, title) {
+  try {
+    const response = await fetch('/api/download-assessment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, title })
+    });
+    
+    if (response.ok) {
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${title.replace(/\s+/g, '_')}.docx`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Download failed. Make sure the server is running on localhost:3000');
+  }
+}
+
+function switchView(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + view).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// Filter chip listeners
+document.addEventListener('DOMContentLoaded', () => {
+  renderScaffolds();
+  renderVideos();
+  renderAssessments();
+  
+  document.querySelectorAll('[data-filter]').forEach(chip => {
+    chip.addEventListener('click', function() {
+      const filterType = this.dataset.filter;
+      document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+      performSearch();
+    });
+  });
+});
+</script>
+
+</body>
+</html>
