@@ -734,23 +734,10 @@ const assessments = [
 function renderScaffolds(filtered = scaffolds) {
   const container = document.getElementById('resourcesContainer');
   
-  // Define resource mappings from original scaffold guide
+  // Define resource mappings from original scaffold guide (documents/templates only - no video duplicates)
   const resourceMappings = {
-    'Breaking Down the Prompt': [
-      { label: '🎬 MTH INT-Peter Bither', url: 'https://drive.google.com/file/d/11m_CWn36xezmeaxuPuwAYDp6BuLSHZBv/view?usp=sharing' }
-    ],
-    'Think Aloud Modeling': [
-      { label: '🎬 MTH INT-Peter Bither', url: 'https://drive.google.com/file/d/1l6ulQXj90gmW5CCqUj2FAnqwKkIymJ35/view?usp=sharing' },
-      { label: '🎬 ELA-Cynthia Owen', url: 'https://drive.google.com/file/d/1A1VEfKLR3wkJ9z7mrXuvmGm8nwbxrL8d/view?usp=sharing' },
-      { label: '🎬 HST-Trevore Humphrey', url: 'https://youtu.be/FgnFrRkix4o?si=xDwAlOgTmYhiF7NT' }
-    ],
     'Chunk Multi-Step Problems': [
-      { label: '🎬 MTH-Katy Ayesiga', url: 'https://drive.google.com/file/d/1hC6cAsQY6-AWi8S8vyYBXyVCCZDCpClN/view?usp=sharing' },
-      { label: '🎬 ELA-Madeline Pace', url: 'https://drive.google.com/file/d/17X7VQZ5cHj_0nxOV6kVSC3-4ugzT1z5Y/view?usp=sharing' },
       { label: '📁 HST-Gabriell Villegas', url: 'https://drive.google.com/drive/folders/1B22SFSSIARIrtVhhfmP-6s0X3lezMh1e' }
-    ],
-    'Structured Graphic Organizers (Digital)': [
-      { label: '🎬 ELA-Madeline Pace', url: 'https://drive.google.com/file/d/1zHtj_yGZ3gGJT1OmH54iOgq3mKR8cEC7/view?usp=sharing' }
     ],
     'Provide Strategy Banks (Digital)': [
       { label: '📄 Strategy Banks For Students', url: 'https://docs.google.com/document/d/1t_gmJI6XgNboFaJCGIGWFaccyebNQqaXPNsxgqNSzQE/copy' }
@@ -759,7 +746,6 @@ function renderScaffolds(filtered = scaffolds) {
       { label: '📊 Math DOK Ladder', url: 'https://docs.google.com/presentation/d/1H9-Q83UAPMe9PQUS-jcIYfcoNwpvEEbaHNJv2p9y5nE/copy' }
     ],
     'Visual Representations in Math': [
-      { label: '🎬 MTH-Sho Nakamura', url: 'https://drive.google.com/file/d/1zu7KPh8Zs03pm0spOSQ5Zlb-x_PJId8H/view?usp=sharing' },
       { label: '📊 ELA-Macbeth Character Chart', url: 'https://drive.google.com/file/d/1wRvDgiyETv84f7Vgnpes1sFsdgzbi-_b/view?usp=sharing' }
     ],
     'Sentence Frames (Digital)': [
@@ -769,10 +755,6 @@ function renderScaffolds(filtered = scaffolds) {
       { label: '📄 Research Frames', url: 'https://drive.google.com/file/d/1dGdXSF82yKtWXuqQbl2Ht3tE1m4S9KXN/view?usp=sharing' },
       { label: '📄 Sequence Frames', url: 'https://drive.google.com/file/d/10ucbl9MK9RnYOk2FeXJa3XVjn8w1XKUW/view?usp=sharing' },
       { label: '📄 Literary Analysis Frames', url: 'https://drive.google.com/file/d/1PbPeOxA6z3meJCfvF-xDyMg92ytp0IkZ/view?usp=sharing' }
-    ],
-    'Teach-Back / Explain-to-Someone-Else (Virtual)': [
-      { label: '🎬 ELA-Marsha Jackson', url: 'https://drive.google.com/file/d/1zfdmRQk8ASB5x_eMmEthDfk2CYvzLbOx/view?usp=sharing' },
-      { label: '🎬 HIST-Gabriel Villegas', url: 'https://drive.google.com/file/d/1Z7ujvXkihicH30-a75Viy1H6in1b1Wnq/view?usp=sharing' }
     ],
     'Pattern Recognition & Generalization (Virtual)': [
       { label: '📄 Content-Based Examples', url: 'https://docs.google.com/document/d/1a-BhosKHdtsACwpbCbAuG3Smp9pe035wCOJROFvddUk/copy' }
@@ -805,7 +787,7 @@ function renderScaffolds(filtered = scaffolds) {
              scaffoldTitle.includes('jigsaw') && videoTitle.includes('jigsaw');
     });
     
-    // Get mapped resources
+    // Get mapped resources (documents only)
     let allResources = [];
     if (relatedVideo) {
       allResources.push({ label: `🎬 ${relatedVideo.title}`, url: relatedVideo.url });
