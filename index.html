@@ -148,6 +148,312 @@
 
     @media (max-width: 1024px) { .lesson-designer { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .resources-grid, .video-grid, .assessment-grid { grid-template-columns: 1fr; } }
+
+    /* OPTION A: CLEAN & MINIMAL DESIGN */
+    .scaffolds-container {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .scaffolds-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .scaffolds-header h2 {
+      font-family: 'Plus Jakarta Sans';
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .scaffolds-header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .scaffolds-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      background: var(--bg-secondary);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--isca-teal);
+      box-shadow: 0 0 0 3px rgba(0, 169, 157, 0.1);
+    }
+
+    .filter-dropdowns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-select {
+      flex: 1;
+      min-width: 160px;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background-color: var(--bg-secondary);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+
+    .filter-select:hover {
+      border-color: var(--isca-teal);
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--isca-teal);
+      box-shadow: 0 0 0 3px rgba(0, 169, 157, 0.1);
+    }
+
+    .scaffold-count {
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .scaffold-count span {
+      font-weight: 600;
+      color: var(--isca-teal);
+    }
+
+    .scaffolds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 3rem;
+    }
+
+    .scaffold-card {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: var(--bg-secondary);
+    }
+
+    .scaffold-card:hover {
+      border-color: var(--isca-teal);
+      box-shadow: 0 4px 12px rgba(0, 169, 157, 0.08);
+      background-color: #f9fffe;
+    }
+
+    .scaffold-resources {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .scaffold-resources-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .scaffold-resource-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      margin-bottom: 4px;
+    }
+
+    .scaffold-resource-item a {
+      color: var(--isca-teal);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .scaffold-resource-item a:hover {
+      text-decoration: underline;
+    }
+
+    .scaffold-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+
+    .scaffold-meta {
+      display: flex;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+
+    .scaffold-dok {
+      padding: 4px 10px;
+      background-color: rgba(0, 169, 157, 0.1);
+      color: var(--isca-teal);
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    /* DOK-Specific Colors */
+    .scaffold-card.dok1 {
+      border-left: 5px solid var(--dok1);
+    }
+
+    .scaffold-card.dok1 .scaffold-dok {
+      background-color: rgba(45, 95, 166, 0.15);
+      color: var(--dok1);
+    }
+
+    .scaffold-card.dok2 {
+      border-left: 5px solid var(--dok2);
+    }
+
+    .scaffold-card.dok2 .scaffold-dok {
+      background-color: rgba(0, 169, 157, 0.15);
+      color: var(--dok2);
+    }
+
+    .scaffold-card.dok3 {
+      border-left: 5px solid var(--dok3);
+    }
+
+    .scaffold-card.dok3 .scaffold-dok {
+      background-color: rgba(247, 148, 29, 0.15);
+      color: var(--dok3);
+    }
+
+    .scaffold-card.dok4 {
+      border-left: 5px solid var(--dok4);
+    }
+
+    .scaffold-card.dok4 .scaffold-dok {
+      background-color: rgba(139, 63, 168, 0.15);
+      color: var(--dok4);
+    }
+
+    .scaffold-subject {
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .scaffold-preview {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .scaffold-expand {
+      color: var(--isca-teal);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .scaffold-expand:hover {
+      text-decoration: underline;
+    }
+
+    .scaffold-details {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+      animation: slideDown 0.2s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scaffold-details h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 12px 0 8px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .scaffold-details p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 12px 0;
+    }
+
+    .scaffold-details ul {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 12px 20px;
+      padding: 0;
+    }
+
+    .scaffold-details li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .filter-dropdowns {
+        flex-direction: column;
+      }
+      
+      .filter-select {
+        width: 100%;
+      }
+
+      .scaffold-card-header {
+        flex-direction: column;
+      }
+
+      .scaffold-meta {
+        width: 100%;
+        flex-direction: row;
+      }
+
+      .scaffolds-header h2 {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -174,40 +480,57 @@
 
   <!-- RESOURCES -->
   <div id="view-resources" class="view active">
-    <h2 class="section-title">Scaffolds & Strategies Library</h2>
-    <p class="section-subtitle">27 research-backed scaffolds across all DOK levels. Search by keyword, filter by subject or DOK level, click to expand.</p>
-
-    <div class="filter-section">
-      <div class="filter-group">
-        <label class="filter-label">Search Scaffolds</label>
-        <input type="text" class="filter-input" id="searchBox" placeholder="e.g., 'error analysis', 'sentence frames', 'think aloud'" onkeyup="performSearch()">
+    <div class="scaffolds-container">
+      <!-- Header -->
+      <div class="scaffolds-header">
+        <h2>🔍 Scaffolds & Strategies Library</h2>
+        <p>Find proven teaching strategies aligned to DOK levels</p>
       </div>
 
-      <div class="filter-group">
-        <label class="filter-label">Subject Area</label>
-        <div class="filter-chips">
-          <span class="filter-chip active" data-filter="subject" data-value="all">All</span>
-          <span class="filter-chip" data-filter="subject" data-value="ELA">ELA</span>
-          <span class="filter-chip" data-filter="subject" data-value="Math">Math</span>
-          <span class="filter-chip" data-filter="subject" data-value="Science">Science</span>
-          <span class="filter-chip" data-filter="subject" data-value="History">History</span>
+      <!-- Search & Filters -->
+      <div class="scaffolds-controls">
+        <input 
+          type="text" 
+          id="searchBox" 
+          class="search-input"
+          placeholder="Search: 'error analysis', 'debate', 'scaffolds for writing'..."
+          onkeyup="performSearch()"
+        >
+        
+        <div class="filter-dropdowns">
+          <select id="subjectFilter" class="filter-select" onchange="performSearch()">
+            <option value="">All Subjects</option>
+            <option value="Math">Math</option>
+            <option value="ELA">ELA</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+            <option value="Government">Government</option>
+            <option value="Tech">Tech</option>
+            <option value="PE">PE</option>
+            <option value="SPED">SPED</option>
+            <option value="Academic Advisory">Academic Advisory</option>
+            <option value="ELD">ELD</option>
+          </select>
+          
+          <select id="dokFilter" class="filter-select" onchange="performSearch()">
+            <option value="">All DOK Levels</option>
+            <option value="1">DOK 1 (Recall)</option>
+            <option value="2">DOK 2 (Skills)</option>
+            <option value="3">DOK 3 (Strategic)</option>
+            <option value="4">DOK 4 (Extended)</option>
+          </select>
         </div>
       </div>
 
-      <div class="filter-group">
-        <label class="filter-label">DOK Level</label>
-        <div class="filter-chips">
-          <span class="filter-chip active" data-filter="dok" data-value="all">All</span>
-          <span class="filter-chip" data-filter="dok" data-value="1">DOK 1</span>
-          <span class="filter-chip" data-filter="dok" data-value="2">DOK 2</span>
-          <span class="filter-chip" data-filter="dok" data-value="3">DOK 3</span>
-          <span class="filter-chip" data-filter="dok" data-value="4">DOK 4</span>
-        </div>
+      <!-- Scaffold Count -->
+      <div class="scaffold-count">
+        ✨ <span id="scaffoldCount">61</span> research-backed strategies
       </div>
+
+      <!-- Scaffolds List -->
+      <div id="resourcesContainer" class="scaffolds-list"></div>
+      <div id="noResults" class="no-results" style="display:none;">No scaffolds match your search.</div>
     </div>
-
-    <div id="resourcesContainer" class="resources-grid"></div>
-    <div id="noResults" class="no-results" style="display:none;">No scaffolds match your search.</div>
   </div>
 
   <!-- LESSON DESIGNER -->
@@ -324,33 +647,67 @@
 <script>
 // ===== SCAFFOLD DATABASE =====
 const scaffolds = [
-  { id: 's1', title: 'Breaking Down the Prompt', dok: 1, subject: 'Math', teacher: 'Guide students: 1) Identify the task, 2) Identify what information is given, 3) Identify what the question is asking. Annotate problems live in Engageli using think-aloud, or have students highlight important numbers, identify the operation/relationship, identify the question, then solve.', why: 'Helps students separate content from computation, translate words into equations, and identify the actual mathematical task.' },
-  { id: 's2', title: 'Think Aloud Modeling', dok: 1, subject: 'ELA', teacher: 'Use language stems at each phase: Understanding ("I notice... The question is..."), Planning ("I think the strategy is..."), Solving ("Next step..."), Checking ("Does this make sense?"). Model live in Engageli using chat or annotation tools.', why: 'Makes invisible thinking visible. Experts automatically interpret problems; students need to see this process modeled.' },
-  { id: 's3', title: 'Chunk Multi-Step Problems', dok: 1, subject: 'Science', teacher: 'Provide all steps: Identify → Plan → Solve → Explain. Post chunking template in Canvas or share on Engageli. As students master each chunk, gradually remove support.', why: 'Over time, students internalize breaking down multi-step problems individually.' },
-  { id: 's4', title: 'Guided Annotation & Highlighting', dok: 1, subject: 'ELA', teacher: 'Teach color-coding: Yellow = main idea, Blue = details, Circle = unfamiliar words, ? = questions. Model live in Engageli, provide marked-up example, guide through one together, release to independent practice.', why: 'Turns passive reading into active engagement. Marking text forces close reading.' },
-  { id: 's5', title: 'Quick Polls & Formative Checks', dok: 1, subject: 'Math', teacher: 'Use Engageli polling for recall checks: "What is 25% of 80?", "True or False?", multiple choice. Review results immediately to adjust instruction and identify misconceptions.', why: 'Quick feedback loops keep students engaged and provide data to differentiate in real-time.' },
-  { id: 's6', title: 'Vocabulary in Context', dok: 1, subject: 'Science', teacher: 'Pre-teach vocabulary: Word, Definition, Example, Non-Example. Post vocabulary banks in Canvas or Engageli for reference. Have students create examples and non-examples.', why: 'Multiple entry points reduce language barriers that block content learning.' },
-  { id: 's7', title: 'Turn Computation Into Context', dok: 2, subject: 'Math', teacher: 'Start with DOK 1 equation (2x + 5 = 17) then add scenario: "A service charges $5 + $2/item. Bill was $17. How many items?" Present bare equation first, then reveal context. Ask: "What changes?"', why: 'Context shifts from "what do I do?" to "what does this mean?" Meaning improves retention.' },
-  { id: 's8', title: 'Guided Questions', dok: 2, subject: 'History', teacher: 'Ask targeted questions beyond recall: "How does X relate to Y?", "Why did this happen?", "What would happen if...?" Post in Canvas discussions.', why: 'Bridges knowing → using by prompting application and explanation.' },
-  { id: 's9', title: 'Structured Graphic Organizers', dok: 2, subject: 'ELA', teacher: 'Provide templates: Claim→Evidence→Explanation, Given Info→Strategy→Why→Solution. Share in Canvas or Engageli. Model one, release to students.', why: 'Reduce cognitive overload while prompting deeper thinking.' },
-  { id: 's10', title: 'Sentence Frames', dok: 2, subject: 'Science', teacher: 'Provide frames requiring application: "_____ is important because _____, which results in _____." Post on slides or Canvas.', why: 'Structure academic thinking and language.' },
-  { id: 's11', title: 'Structured Problem Solving Frames', dok: 2, subject: 'Math', teacher: 'Provide steps: 1) What do I know? 2) What am I finding? 3) What strategy? 4) Solve 5) Explain. Include in all assignments.', why: 'Breaks complexity into manageable parts.' },
-  { id: 's12', title: 'Provide Strategy Banks', dok: 2, subject: 'Math', teacher: 'Build visual reference of strategies (Factoring, Quadratic Formula, Graphing). Keep posted in Engageli or Canvas.', why: 'Builds independence and bridges to DOK 3.' },
-  { id: 's13', title: 'The DOK Ladder (Layered Questions)', dok: 3, subject: 'Science', teacher: 'Layer questions: 1) What do you notice? (DOK 1) 2) What does it mean? (DOK 2) 3) Why does it matter? (DOK 3). Isolate one cognitive task per layer.', why: 'Transparency supports students. Build understanding before tackling higher thinking.' },
-  { id: 's14', title: 'Visual Representations', dok: 3, subject: 'Math', teacher: 'Use multiple representations: Graph, Table, Equation, Context. Have students translate between forms and explain meaning.', why: 'Abstract ideas become concrete. Students see patterns that are hard to grasp through words alone.' },
-  { id: 's15', title: 'Error Analysis Tasks', dok: 3, subject: 'Math', teacher: 'Show incorrect work. Ask: "Which step is wrong?", "Why?", "How do we fix it?" Share samples in Engageli or Canvas discussions.', why: 'Students learn from existing thinking. Focus on understanding and reasoning.' },
-  { id: 's16', title: 'Signal Words & Sentence Frames', dok: 3, subject: 'ELA', teacher: 'Use genre-specific frames: Argument ("My position is... because... Therefore..."), Cause/Effect ("As a result of..., which ultimately..."), Compare ("Both address... However...").', why: 'Strengthen argumentation and layered responses.' },
-  { id: 's17', title: 'Justification Prompts', dok: 3, subject: 'Science', teacher: 'Require reasoning: "Why does this work?", "How do you know?", "What assumptions?" Build into every assignment.', why: 'Shift students from doing → understanding.' },
-  { id: 's18', title: 'Argumentation (CER)', dok: 3, subject: 'History', teacher: 'Require: Claim (conclusion), Evidence (support), Reasoning (why evidence proves claim). Use in Canvas assignments and Engageli discussions.', why: 'Structured path to higher-order thinking across all disciplines.' },
-  { id: 's19', title: 'Collaborative Reasoning', dok: 3, subject: 'ELA', teacher: 'Use Think-Pair-Share or Jigsaws. Think individually, Pair/discuss in breakout, Share with group. Scaffold with frames.', why: 'Build understanding together, hear alternatives, refine reasoning with peers.' },
-  { id: 's20', title: 'Strategy Anchors', dok: 3, subject: 'Math', teacher: 'Create permanent visual references (posters, slides, sidebars) of key strategies. Students reference anytime.', why: 'Support without teacher dependence. Builds self-sufficient learners.' },
-  { id: 's21', title: 'Multiple Solution Strategies', dok: 3, subject: 'Science', teacher: 'Design tasks requiring comparison: "Solve two ways. Which is more efficient?", "Design two experiments. Which is more reliable?" Have students present and justify.', why: 'Pushes into analysis, comparison, and evaluation.' },
-  { id: 's22', title: 'Graph–Equation–Context Connections', dok: 3, subject: 'Math', teacher: 'Pair representations: Equation ↔ Graph ↔ Table ↔ Context. Ask students to translate between forms and explain meaning.', why: 'Multiple entry points deepen understanding.' },
-  { id: 's23', title: 'Guided Inquiry Prompts', dok: 4, subject: 'Science', teacher: 'Embed open-ended prompts: "What patterns do you notice?", "How would your solution change if...?", "What assumptions are you making?" Use in async Canvas assignments.', why: 'Support independence and metacognition without reducing complexity.' },
-  { id: 's24', title: 'Constrained Innovation Task', dok: 4, subject: 'Science', teacher: 'Provide real-world problem with defined constraints, require original solutions. "Design a water filter with only these materials. How does it work?"', why: 'Constraints reduce cognitive overload, allowing focus on synthesis.' },
-  { id: 's25', title: 'Iteration & Revision Cycles', dok: 4, subject: 'ELA', teacher: 'Build in cycles: Draft → Peer Review (Engageli) → Revise (Canvas) → Present → Publish. Scaffold each cycle with rubrics and exemplars.', why: 'Encourages sustained inquiry. Complex thinking develops over time.' },
-  { id: 's26', title: 'Capstone Projects & Synthesis', dok: 4, subject: 'History', teacher: 'Design culminating project requiring synthesis: Documentary analyzing multiple factors, Position paper with 10+ sources, Policy proposal. Break into milestones in Canvas.', why: 'Synthesizes learning, builds agency, demonstrates mastery.' },
-  { id: 's27', title: 'Peer Critique & Feedback Protocols', dok: 4, subject: 'ELA', teacher: 'Teach protocol: Glow (what works), Grow (improve), Goal (next step). Use in Engageli breakout reviews with frames: "I appreciated...", "I was curious...", "I wonder if..."', why: 'Builds feedback skills, supports revision, normalizes critique.' }
+  { id: 's1', title: 'Breaking Down the Prompt', dok: 1, subject: 'Math, Science, History, Government, Tech, Academic Advisory', teacher: 'Guide students to analyze questions in 3 steps: 1) Identify the task, 2) Identify what information is given, 3) Identify what the question is asking. Model live in Engageli using annotation tools or shared screen where you highlight key information. Have students annotate shared problems, identifying numbers, operations, and the actual question. Or in Canvas, provide the same analysis framework as a quiz or discussion prompt.', why: 'Helps students separate content from computation, translate words into equations, and identify the actual mathematical task. Annotation tools make thinking visible in virtual space.' },
+  { id: 's2', title: 'Think Aloud Modeling', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Use language stems at each phase: Understanding ("First, I notice... The question is asking... Important information is..."), Planning ("I think the best strategy is... This reminds me of..."), Solving ("The next step is... I am doing this because..."), Checking ("Let me check if my answer makes sense."). Model live in Engageli using screen share and chat/annotation. Record the session so students can review asynchronously.', why: 'Makes invisible thinking visible. Experts automatically interpret problems, choose strategies, monitor progress, and check answers—students don\'t see this unless it\'s modeled explicitly. Recording allows revisit and reflection.' },
+  { id: 's3', title: 'Chunk Multi-Step Problems', dok: 1, subject: 'Math, Science, ELA, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Provide all steps initially: Identify → Plan → Solve → Explain. For Math: write → solve → interpret. For Science: claim → evidence → reasoning. For ELA: identify idea → find evidence → explain meaning. Post the chunking template in Canvas module or share on Engageli slide deck. As students master each chunk, remove support gradually in follow-up assignments.', why: 'Over time, students internalize breaking down multi-step problems individually. Chunking becomes a mental habit, not just a support scaffold. Visible steps help structure remote work.' },
+  { id: 's4', title: 'Guided Annotation & Highlighting', dok: 1, subject: 'ELA, Science, History, Government, SPED, Academic Advisory, ELD', teacher: 'Teach students a color-coding system: Yellow = main idea, Blue = supporting details, Circle = unfamiliar words, ? = questions. Model this live in Engageli on a shared document or PDF annotation. Provide a marked-up example first (save as image in Canvas), then guide students through one together using annotation tools. Release to independent practice with Canvas assignments or Engageli breakout tasks.', why: 'Turns passive reading into active engagement. Marking text forces close reading and prepares students for deeper comprehension and analysis work. Digital annotation tools enable visible collaboration.' },
+  { id: 's5', title: 'Quick Polls & Formative Checks', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Use Engageli polling feature during synchronous sessions for rapid recall checks: "What is 25% of 80?", "True or False: All rectangles are squares?", "Which term means...?". Review results immediately in real-time to identify misconceptions. Also use Canvas Quizzes for asynchronous quick checks, reviewing results before next session to differentiate instruction.', why: 'Quick feedback loops keep students engaged and give you immediate data to adjust instruction and identify who needs reteaching. Virtual polling provides instant visibility into understanding.' },
+  { id: 's6', title: 'Vocabulary in Context', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Pre-teach key vocabulary with a consistent frame: Word, Definition, Example, Non-Example. Create a shared Engageli slide deck or Canvas module with vocabulary bank. Include images, icons, and visual representations when possible. Have students create their own examples and non-examples in Canvas discussion or shared Google Doc. Update vocabulary resource throughout unit.', why: 'Provides multiple entry points to understanding vocabulary and reduces language barriers that block content learning. Visual organization in digital format supports asynchronous reference.' },
+  { id: 's1a', title: 'Word Wall & Anchor Charts (Digital)', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Create digital word wall in Canvas (module or assignment with images/definitions) or Engageli slide deck. Include key terms, definitions, examples, and icons/images. Update throughout unit as new vocabulary is introduced. Reference explicitly during Engageli sessions: "Remember our digital word wall shows..." Link in Canvas for asynchronous student reference. Consider sharing as image students can bookmark.', why: 'Permanent digital references reduce cognitive load. Visual anchors help students internalize terminology and can be referenced independently. Accessible 24/7 in Canvas.' },
+  { id: 's1b', title: 'Mnemonic Devices & Acronyms', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Create memorable devices for procedural steps or lists. Examples: PEMDAS (math order of operations), SOAPS (literary analysis), FANBOYS (coordinating conjunctions), HOMES (Great Lakes). Teach the mnemonic in Engageli synchronously with visual display. Create a Canvas resource page with all mnemonics, images, and examples. Have students create their own mnemonics in assignments or discussions.', why: 'Memory devices become automatic retrieval strategies. Acronyms reduce cognitive load by chunking information. Digital storage allows easy reference and addition of student-created mnemonics.' },
+  { id: 's1c', title: 'Cornell Note-Taking System (Digital)', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Teach Cornell notes structure: Left column (narrow) = Cues, Middle (wide) = Notes, Bottom = Summary. Provide a Google Doc template or Canvas upload template. During Engageli synchronous lessons, students take notes in the middle section while you teach. During asynchronous learning, provide lecture slides or videos; students organize notes using template. Review and discuss during next sync session.', why: 'Structured format forces active processing during note-taking. Review process deepens learning. Left-side cues create retrieval practice opportunities. Template ensures consistency for all students.' },
+  { id: 's1d', title: 'Highlighting & Color-Coding Text (Digital)', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Teach a consistent color system: Pink = main idea, Blue = supporting evidence, Yellow = vocabulary, Green = examples, Orange = author\'s opinion. Model with shared text in Engageli using screen share and annotation tools. Provide highlighted example document in Canvas. Have students apply system to assigned text using Canvas PDF annotation tools or Google Docs built-in highlighter. Teach students to be selective (not everything should be highlighted).', why: 'Adds sensory input (color) to reading. Makes scanning easier. Helps students prioritize important information. Digital tools allow saving and sharing annotated texts.' },
+  { id: 's1e', title: 'Flashcard & Spaced Repetition (Digital)', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Create digital flashcards using Quizlet, Anki, or Kahoot. Include term on front, definition/image on back. Assign in Canvas as warm-up activities or exit tickets. Use Engageli games feature for competitive flashcard review during sync sessions. Schedule Canvas quiz reviews using spacing effect: Day 1, Day 3, Day 7, Day 14. Students review independently on mobile devices or computers.', why: 'Spacing effect dramatically increases long-term retention. Digital platforms provide automatic scheduling. Mobile access supports independent practice. Gamification in Engageli increases engagement.' },
+  { id: 's1f', title: 'Digital Graphic Organizers & Templates', dok: 1, subject: 'Science, Math, Social Studies', teacher: 'Create reusable digital templates: Venn diagrams, concept maps, timelines, matrices. Save as images, Google Docs, or Canvas templates. Have students complete using Google Docs, Canva, or Canvas submission tools. For synchronous learning, share template in Engageli and complete together using annotation tools. For asynchronous, provide instructions and example in Canvas assignment. Save completed organizers as reference tools.', why: 'Visual organization supports learning. Digital templates ensure consistency. Students create reference tools they\'ll actually use. Easy to share and store.' },
+  { id: 's1g', title: 'Picture Walk / Preview Strategy (Digital)', dok: 1, subject: 'ELA, Science, Social Studies', teacher: 'Before assigning reading (via Canvas), have students look through images, headings, captions, and diagrams without reading full text. In Engageli, display images on slides; ask: "What do you think this is about?" Have them predict content. Then read text to confirm/revise predictions. Or in Canvas, create a preview activity where students examine images and make predictions before accessing the full reading.', why: 'Activates prior schema and primes brain for content. Predictions increase engagement and focus. Helps students form mental models before detailed learning. Virtual format allows easy image sharing.' },
+  { id: 's1h', title: 'Skimming & Scanning Strategies (Digital)', dok: 1, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Teach students to SKIM (read quickly for main idea: first/last sentences, headings, bold words) and SCAN (search quickly for specific info: topic sentence, targeted word search). Model with shared text in Engageli using screen share and highlighting. Time the activity for engagement. In Canvas, provide reading with questions that require skimming/scanning, teaching students to use search function (Ctrl+F) for efficiency.', why: 'Builds reading efficiency. Helps students identify important information quickly. Reduces overwhelm when facing long texts. Digital search features enhance scanning skills.' },
+  { id: 's1i', title: 'Choral & Echo Reading (Virtual)', dok: 1, subject: 'ELA, History', teacher: 'CHORAL: Whole group reads same text aloud together during Engageli session—you count down, students unmute and read together, then mute. ECHO: You read a phrase via screen share, students read it aloud together, then you continue. Alternate lines: You read one sentence aloud, student breakout groups read next sentence together. Use for poetry, speeches, important passages. Record for asynchronous review.', why: 'Models fluency and pronunciation. Builds confidence in struggling readers. Engages auditory learners. Community-building activity in virtual space. Recording allows repeated listening.' },
+  { id: 's7', title: 'Turn Computation Into Context', dok: 2, subject: 'Math', teacher: 'Start with DOK 1 (2x + 5 = 17) then add a scenario: "A streaming service charges a $5 monthly fee plus $2 per movie. How many movies were rented if the bill was $17?" In Engageli, present the bare equation first on slide, then reveal the context story. Ask: "What changes when we add a real scenario?" Post follow-up practice problems in Canvas with scenarios for students to solve and explain.', why: 'When context is added, the brain asks "What does this mean?" instead of "What do I do?" Meaning improves attention, retention, and transfer. Virtual format allows easy scenario sharing and recording.' },
+  { id: 's8', title: 'Guided Questions', dok: 2, subject: 'History', teacher: 'Use targeted questions that prompt students beyond recall into application and explanation. Science: "How does the structure of the mitochondria help it perform its function?" Math: "Which formula would you use here, and why does it apply to this shape?" ELA: "How does this theme show up in the character\'s actions in this scene?" History: "What caused this event, and how did it impact different groups?" Post in Canvas discussions or Engageli breakout room discussions.', why: 'Guided questions bridge knowing → using by prompting students to apply knowledge in context and explain their thinking. Virtual discussions preserve student responses for review.' },
+  { id: 's9', title: 'Structured Graphic Organizers (Digital)', dok: 2, subject: 'ELA', teacher: 'Provide purposeful, partially completed digital organizers. Science: Type of Energy → Real-World Example → How Energy is Transferred. Math: Given Information → Strategy Chosen → Why it Works → Solution. ELA: Claim → Evidence → Explanation. History: Group → Experience → Impact → Reasoning. Share as Google Doc templates or Canvas assignment templates. Model completion together in Engageli, then students complete independently.', why: 'Reduce cognitive overload while prompting deeper thinking. Help students move from recall to organizing, applying, and explaining relationships. Digital templates ensure consistency.' },
+  { id: 's10', title: 'Sentence Frames (Digital)', dok: 2, subject: 'Science', teacher: 'Provide strategic frames requiring application, choices, and reasoning. Science: "Photosynthesis is important because it allows _____ to _____, which results in _____." Math: "I used the formula _____ because the problem involves _____, which means _____." ELA: "The theme is _____, and this is shown when _____, which suggests _____." History: "The main cause of _____ was _____, which led to _____ because _____." Post on Engageli slides or in Canvas assignments/discussions.', why: 'Structure academic thinking and language, pushing students beyond recall into application and explanation. Frames reduce anxiety and support ELL students. Can be adapted/reused across units.' },
+  { id: 's11', title: 'Structured Problem-Solving Frames (Digital)', dok: 2, subject: 'Math', teacher: 'Provide explicit steps: 1. What do I know? 2. What am I trying to find? 3. What strategy will I use? 4. Solve. 5. Explain. Create as downloadable template, post in Canvas, or share in Engageli slides. Include worked example using the frame. Model it live in Engageli several times. Have students fill in the frame for assigned problems in Canvas submissions.', why: 'Students often struggle because too many cognitive tasks happen at once. A structured frame breaks this into clear, manageable parts. Digital template ensures consistent application.' },
+  { id: 's12', title: 'Provide Strategy Banks (Digital)', dok: 2, subject: 'Math', teacher: 'Build a visual reference of go-to strategies students can independently consult. Example for Math: "Solving a quadratic: Factoring, Quadratic Formula, Completing the Square, Graphing". Create as a Canvas module resource, Engageli slide deck, or downloadable infographic. Keep visible by linking in Canvas sidebar or referencing in Engageli every session. Consistently ask: "Which strategy from the bank could you try?"', why: 'Builds independence and persistence. Students learn to choose strategies, not just execute them. Accessible reference reduces cognitive load. Easy to update and customize.' },
+  { id: 's2a', title: 'Worked Examples & Step-by-Step Models (Digital)', dok: 2, subject: 'Math, Science', teacher: 'Show complete solved problem with annotations explaining each step. Use Engageli to screen share and annotate while explaining. Example: "2x + 5 = 17. First, subtract 5 from both sides [annotation: why? to isolate the x term]. Now we have 2x = 12. Next, divide both sides by 2 [annotation: why? coefficient of x is 2]. Therefore x = 6." Record the worked example. Save as PDF or images in Canvas assignment for asynchronous reference. Include 2-3 worked examples before independent work.', why: 'Reduces cognitive load. Students learn through observation before attempting. Reduces errors and builds confidence. Recording allows revisit and reflection for different learners.' },
+  { id: 's2b', title: 'Comparison & Contrast Organizers (Digital)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Provide visual organizers (Venn diagram, T-chart, comparison matrix) as Google Doc templates or Canvas assignment tools. Partially complete with one example, then have students add more. Use Canva or Google Drawing for synchronous completion in Engageli breakout rooms. Assign for Canvas for independent work. Visually organize to compare: texts, concepts, characters, historical events, mathematical approaches.', why: 'Forces students to identify relationships and differences. Builds understanding of nuance. Prepares for more complex analysis. Digital tools enable easy sharing and collaboration.' },
+  { id: 's2c', title: 'Concept Mapping (Digital)', dok: 2, subject: 'Science, Social Studies', teacher: 'Have students create visual representation of concepts and how they connect. Central concept in middle, related concepts branching out, with labeled connection lines showing relationships. Use digital tools: Popplet, MindMeister, Lucidchart, or Google Draw. Example: "Photosynthesis" → branches to "Light reactions" and "Calvin Cycle" → each branches to components and processes. Model in Engageli first using shared tool. Assign in Canvas with example provided.', why: 'Shows relationships and builds understanding of systems. Visual organization helps students see big picture. Creates reference tool for review. Easy to save and update.' },
+  { id: 's2d', title: 'Real-World Application Connections (Digital)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Make explicit connections to students\' lives and interests: "Here\'s how photosynthesis powers the food you eat." "Here\'s how exponential functions model phone app growth." "Here\'s how this historical event created laws that affect you today." Include in Engageli discussions with examples and videos. Post application examples in Canvas module. Ask students to find and share real-world connections in discussions or Canvas submissions.', why: 'Relevance increases motivation and retention. Students understand WHY they\'re learning something. Improves transfer to novel situations. Personalizing examples increases engagement.' },
+  { id: 's2e', title: 'Teach-Back / Explain-to-Someone-Else (Virtual)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Have students explain concept in own words to peer. In Engageli: Pair students in breakout rooms—one explains, other unmutes and asks "Why?" or "Can you explain that differently?" Then switch. In Canvas: Assign discussion post where students explain concept, peers respond with questions/clarifications. After teaching back, ask: "What was hard to explain? What made you realize you didn\'t understand?"', why: 'Producing explanations reveals gaps. Students deepen understanding through articulation. Peer learning is highly effective. Virtual discussions provide written record of thinking.' },
+  { id: 's2f', title: 'Guided Practice With Decreasing Support (Virtual)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Follow I-DO-YOU model: I DO (you model with think-aloud in Engageli screen share), WE DO (class does together in breakout rooms or Canvas discussion with prompting), YOU DO (students do independently in Canvas submission with feedback). Decrease your prompts with each round. First time, give all steps. Second time, students fill in middle steps. Third time, students do all steps but you check work. Record "I DO" for asynchronous learners.', why: 'Students master with support, then gradually apply independently. Reduces struggle and builds confidence. Brain research supports this progression. Virtual format allows flexible scheduling.' },
+  { id: 's2g', title: 'Check for Understanding Prompts (Virtual)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Use strategic questions throughout Engageli lesson: "What\'s another way to solve this?" "What would happen if...?" "Why did we choose this strategy instead of that one?" "Can you give an example of when you\'d use this in real life?" Use Engageli polling, chat, or hand-raise feature. Embed in Canvas discussions asking students to respond to prompts. Don\'t wait until end of lesson to check—embed throughout for real-time adjustment.', why: 'Reveals misconceptions before they solidify. Keeps students engaged throughout lesson. Allows real-time adjustment of instruction. Virtual polling provides instant data.' },
+  { id: 's2h', title: 'Two-Column Notes (Digital Notes & Responses)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Left side: Teacher input/reading (you provide or share). Right side: Student response/example/connection (students must write). During Engageli lesson, you provide statement on Engageli slide, students respond in shared Google Doc or Canvas note-taking tool. Example: Left "The mitochondria is the powerhouse of the cell." Right "That means it provides energy by breaking down glucose." Collect responses for review.', why: 'Active engagement with content as it\'s presented. Prevents passive listening. Creates personalized notes students will actually use. Digital format preserves all responses.' },
+  { id: 's2i', title: 'PQR (Predict-Question-Respond) Strategy (Digital)', dok: 2, subject: 'ELA, Science, History', teacher: 'PREDICT: Before reading, students make predictions about content (in Canvas discussion or Engageli chat). QUESTION: During reading (async work), students write questions they have (in Google Doc or Canvas note tool). RESPOND: After reading, students answer their questions based on text. Can be individual or small group (Engageli breakout). Create Canvas assignment with template for organizing these three sections.', why: 'Engages reader at multiple points. Builds metacognition. Predictions activate schema. Questions focus attention. Responding checks comprehension. Digital format allows sharing and discussion.' },
+  { id: 's2j', title: 'Categorization & Sorting Activities (Digital)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Give students terms, concepts, or examples via Canvas and ask them to sort into categories with justification. Use online tools (Pear Deck, Padlet) for interactive sorting during Engageli. Example: Sort mathematical terms into "operations," "properties," "theorems." Sort historical events into "causes of Civil War" vs "effects of Civil War." Students explain reasoning for each categorization in discussion or Canvas assignment.', why: 'Builds schema and forces students to think about attributes. Reveals misconceptions (incorrect sorting shows thinking). Develops organizational thinking. Interactive tools increase engagement.' },
+  { id: 's2k', title: 'Similes, Analogies & Metaphors (Digital)', dok: 2, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Connect new knowledge to existing mental models. "This is like... because..." Examples: "Mitochondria is like a battery because..." "Fractions are like slicing a pizza because..." "This character is like... because..." Model during Engageli with think-aloud. Have students generate their own analogies in Canvas discussion, Engageli chat, or shared Google Doc. Visual aids (images) can support understanding.', why: 'Connects new knowledge to existing mental models. Makes abstract concrete. Personalized analogies create stronger memories. Digital discussions allow peer feedback on quality.' },
+  { id: 's2l', title: 'Label Diagrams & Annotate Images (Digital)', dok: 2, subject: 'Science, Math, History', teacher: 'Provide diagram or image (via Canvas, Engageli slides, or as PDF). Students label parts and add explanatory notes using Canvas annotation tools, Google Drawings, or PDF editors. Science: Label cell parts and write function of each. Math: Label triangle sides and write what they represent. History: Label map and explain significance. Start with partially labeled example, then students complete. Save completed annotations as reference.', why: 'Combines visual and textual processing. Forces students to understand relationships and functions. Creates personalized study guide. Digital annotation tools are intuitive and shareable.' },
+  { id: 's13', title: 'The DOK Ladder (Layered Questions)', dok: 3, subject: 'Science', teacher: 'Isolate one skill at a time. Layer 1 → what you notice (DOK 1), Layer 2 → what it means (DOK 2), Layer 3 → why it matters (DOK 3). Post each layer as a separate prompt in Canvas discussion or Engageli breakout discussion. This transparency supports students who struggle with ambiguity. Model first layer together, then release to independent thinking. Scaffold by revealing one layer at a time.', why: 'Students can focus on one cognitive task at a time, gradually building understanding and confidence. Transparent scaffolding supports diverse learners. Virtual format allows flexible pacing.' },
+  { id: 's14', title: 'Visual Representations', dok: 3, subject: 'Math', teacher: 'Use graphs, graphic organizers, tables, or diagrams. Instead of just solving y = 2x + 3, students also: Graph it (using Desmos or GeoGebra), Create a table, Interpret the slope, Explain what each parameter means in context. Share templates and examples in Engageli or Canvas. Model translating between representations using screen share. Have students upload visual representations in Canvas.', why: 'Translate abstract ideas into concrete, visible forms. Students see relationships, patterns, structures that are hard to grasp through words or numbers alone. Digital graphing tools are interactive.' },
+  { id: 's15', title: 'Error Analysis Tasks', dok: 3, subject: 'Math', teacher: 'Prompt students to analyze incorrect solutions: Identify the mistake, Explain the error, Defend the correction. Example: "A student solves \'3x + 6 = 21, 3x = 27, x = 27\'. Which step is wrong? Why? How do we correct it?" Share incorrect work samples in Engageli slides or Canvas assignment. Have students discuss analysis in Engageli breakout rooms or Canvas discussions.', why: 'Let students learn from thinking that\'s already been done. By analyzing mistakes, students focus on understanding and reasoning. Virtual discussions preserve analysis thinking.' },
+  { id: 's16', title: 'Signal Words & Sentence Frames (Digital)', dok: 3, subject: 'ELA', teacher: 'Use genre-specific signal words and frames. Argument: "My position is... because the evidence shows... Therefore..." Cause & Effect: "As a result of..., the consequence was..., which ultimately..." Compare/Contrast: "Both texts address... However, they differ because..." Provide as downloadable frame document in Canvas or display on Engageli slides. Reference during synchronous writing activities.', why: 'Strengthen argumentation and layered question responses. Help students move from basic to academic explanations. Frames level the playing field for ELL students.' },
+  { id: 's17', title: 'Justification Prompts (Virtual)', dok: 3, subject: 'Science', teacher: 'Require reasoning with prompts: "Why does this method work?", "How do you know your answer is correct?", "Which strategy is most efficient?", "What assumptions are you making?" Build these into every assignment. Use in Engageli discussions, Canvas quiz essay questions, and discussion prompts. Expect written explanations that you can review and provide feedback on.', why: 'Shift students from doing to understanding. They must explain the "why" behind their thinking. Virtual format allows detailed written responses and feedback.' },
+  { id: 's18', title: 'Argumentation (CER - Claim-Evidence-Reasoning)', dok: 3, subject: 'History', teacher: 'Require students to defend a claim: Claim (What is your conclusion?), Evidence (What supports your claim?), Reasoning (Why does this evidence justify your claim?). Model in Engageli using think-aloud with a sample prompt. Assign in Canvas where students submit CER responses. Example: Student says "All quadratic graphs have 2 solutions." Ask: "Is this always true? What\'s your evidence? Why does your evidence prove it?"', why: 'Structured path to higher-order thinking. Argumentation requires claiming, supporting, and reasoning. Virtual discussions preserve full arguments for review.' },
+  { id: 's3a', title: 'Scaffolded Inquiry Questions (Virtual)', dok: 3, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Provide tiered questions from closed to open: "What do you notice?" → "Why do you think that?" → "What if we changed this variable?" → "How would you test that?" Post all tiers in Canvas discussion or Engageli breakout with instructions to respond to each progressively. Start with concrete observations, build toward abstract reasoning. Model first tier in synchronous session before releasing to asynchronous work.', why: 'Supports student thinking while building toward independence. Each tier builds on previous. Virtual discussions allow revisiting and building understanding.' },
+  { id: 's3b', title: 'Debate & Structured Controversy (Virtual)', dok: 3, subject: 'ELA, History, Government', teacher: 'Set up formal debate in Engageli breakout rooms: Two sides, each with prepared arguments and counter-arguments. Assign positions (not students\' personal beliefs). Each side prepares position (in Canvas), anticipates opposing view, prepares rebuttal. Conduct debate in Engageli with structured turns (moderator mutes/unmutes to ensure equal air time). Debrief afterward—students don\'t have to agree with assigned side. Record for reflection.', why: 'Forces deep thinking about multiple perspectives. Builds argumentation skills. Requires understanding opposing viewpoint to counter it. Virtual format allows all voices to be heard.' },
+  { id: 's3c', title: 'Case Study Analysis (Virtual)', dok: 3, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Present real-world scenario or case via Canvas case study document or Engageli presentation. History: Analyze how a specific group experienced an event. Science: Analyze an environmental challenge—what caused it, who\'s affected, what solutions exist? Business: Case study of company decision. Students analyze using concepts from unit in Canvas assignment or Engageli discussion. Include guiding questions: "What\'s the problem? Who is affected? What caused it? What are possible solutions?"', why: 'Authentic context increases engagement and transfer. Students see concepts in action. Real-world relevance builds motivation. Virtual format allows complex document sharing.' },
+  { id: 's3d', title: 'Reverse Engineering / Working Backwards (Virtual)', dok: 3, subject: 'Math, Science', teacher: 'Give the answer; have students work backwards to find the process. Math: "The answer is x = 5. Show me three different equations this could be the solution to." Science: "Plants need glucose. Work backwards to explain how that glucose is made." Assign in Canvas for individual work or discuss in Engageli breakout rooms. Have students explain their working-backwards process in writing or chat.', why: 'Forces understanding of cause-effect and variable relationships. Requires deeper thinking than forward problem-solving. Reveals conceptual misunderstandings. Virtual discussions show reasoning.' },
+  { id: 's3e', title: 'Modification & Variation Tasks (Virtual)', dok: 3, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Ask: "What if we changed [variable]? How would that affect...?" Math: "What if the coefficient was negative?" Science: "What if temperature increased by 10 degrees?" ELA: "What if the protagonist made a different choice?" Have students predict (in Canvas discussion or Engageli chat), then test/verify prediction using digital tools (Desmos for graphing, virtual simulations, or Canvas submission). Build hypothesis → test → reflect cycle.', why: 'Builds understanding of cause-effect and variables. Forces thinking about relationships. Develops systems thinking. Digital tools enable testing hypotheses instantly.' },
+  { id: 's3f', title: 'Comparative Analysis Across Texts (Digital)', dok: 3, subject: 'ELA, History, Science', teacher: 'Compare how two sources treat same topic; analyze differences. ELA: Compare how two authors approach same theme. History: Compare how two sources describe same event. Science: Compare how different sources explain same phenomenon. Share both texts in Canvas or Engageli. Ask: "What\'s different? Why might the authors differ? Which is more reliable and why?" Have students submit comparison analysis in Canvas or discuss in breakout rooms.', why: 'Requires synthesis and critical evaluation. Develops discernment. Reveals bias and perspective. Builds media literacy. Digital format allows side-by-side text viewing.' },
+  { id: 's3g', title: 'Pattern Recognition & Generalization (Virtual)', dok: 3, subject: 'Math, Science', teacher: 'Have students find patterns in data or examples, make generalizations, then test with new examples. Use spreadsheets, Desmos, or simulation tools for pattern exploration. Math: "Look at these number patterns. What\'s the rule? Test it with a new number." Science: "Look at these organisms. What pattern do you notice? Can you generalize about all organisms in this category?" Share data in Canvas, have students work in spreadsheets or submit analysis.', why: 'Builds inductive reasoning and scientific thinking. Develops ability to identify rules and relationships. Essential for abstract thinking. Digital tools enable large data sets.' },
+  { id: 's3h', title: 'Socratic Seminars (Virtual)', dok: 3, subject: 'ELA, History, Philosophy', teacher: 'Student-led discussion in Engageli breakout rooms with text. Students have read text previously (assigned in Canvas). Teacher poses opening question. Students discuss, building on each other\'s ideas, referencing text. Teacher asks follow-up questions but doesn\'t provide answers. Students practice listening, disagreeing respectfully, supporting claims with evidence. Record for students to review discussions and self-assess participation.', why: 'Peer dialogue forces articulation and deeper thinking. Students take ownership of discussion. Develops critical thinking and communication skills. Recording allows reflection on discourse.' },
+  { id: 's3i', title: 'Literature Circles / Text Discussions (Virtual)', dok: 3, subject: 'ELA, History', teacher: 'Divide students into small Engageli breakout groups. Assign roles: Discussion Leader (asks questions), Vocabulary Master (defines key words), Connector (links text to outside examples), Summarizer (summarizes section). Groups discuss assigned text section in breakout rooms. Use Canvas discussion threads for asynchronous groups. Rotate roles each meeting. Have groups report key insights to full class.', why: 'Peer learning deepens comprehension. Role assignment ensures participation. Different perspectives enrich discussion. Rotation develops multiple skills. Virtual breakouts create safe discussion spaces.' },
+  { id: 's3j', title: 'How-To Analysis / Procedural Breakdown (Virtual)', dok: 3, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Analyze steps of a process; identify where efficiency is lost; propose improvements. Math: "Walk through this long division problem. Where do students usually make mistakes? How could we simplify?" Science: "This is the nitrogen cycle. Where is energy required most? Why?" Assign in Canvas or discuss in Engageli. Have students propose alternative sequences or efficiency improvements. Use visual diagrams to show process steps.', why: 'Builds procedural knowledge and critical thinking about processes. Develops optimization thinking. Real-world application shows relevance. Virtual format allows complex diagrams.' },
+  { id: 's19', title: 'Guided Inquiry Prompts (Virtual)', dok: 4, subject: 'Science', teacher: 'Embed open-ended prompts that guide but don\'t direct: "What patterns do you notice across sources?", "How would your solution change under different conditions?", "What assumptions are you making? What if they were wrong?" Math: "What happens if you adjust one variable?" ELA: "How does this message shift in a different cultural context?" Post in Canvas assignments. Have students submit written reflections or create digital presentations of their thinking.', why: 'Support independence and metacognition without reducing complexity. Students think deeply within guided boundaries. Virtual format captures extended thinking in writing.' },
+  { id: 's20', title: 'Constrained Innovation Task (Virtual)', dok: 4, subject: 'Science', teacher: 'Provide real-world problem with defined digital parameters, but require original solutions. Science: "Design a water filtration system using only these materials [provide images]—justify how it removes contaminants." ELA: "Create a modern adaptation of Romeo and Juliet in a new context, preserving core themes." Math: "Develop a cost-efficient floor plan using area constraints and budget limits [provide digital tools]." Have students submit designs/solutions in Canvas or present in Engageli.', why: 'Constraints reduce cognitive overload, allowing focus on synthesis and problem-solving. Engagement through real-world relevance. Virtual format enables various submission types.' },
+  { id: 's21', title: 'Iteration & Revision Cycles (Virtual)', dok: 4, subject: 'ELA', teacher: 'Build in cycles: Draft (Canvas submission) → Peer Review (Engageli breakout discussion or Canvas peer review tool) → Revise (Canvas resubmission) → Present (Engageli or recorded presentation) → Publish (class portfolio in Canvas). Scaffold each cycle with rubrics, exemplars, and feedback templates. Have students track revisions showing growth over time. Share final products in class gallery or presentation.', why: 'Encourages sustained inquiry and improvement. Reinforces that complex thinking develops over time. Virtual format documents all iterations. Peer feedback motivates revision.' },
+  { id: 's22', title: 'Capstone Projects & Synthesis (Virtual)', dok: 4, subject: 'History', teacher: 'Design culminating project requiring synthesis across unit. History: Create digital documentary or presentation analyzing multiple factors. Science: Design/conduct experiment, analyze data (using spreadsheets), propose real-world applications. ELA: Write/defend position paper with 10+ sources. Government: Develop policy proposal with evidence and counterarguments. Academic Advisory: Personal growth plan reflecting on 7 Mindsets. Break into milestones in Canvas with check-ins via Engageli discussions.', why: 'Synthesizes learning, builds agency, demonstrates mastery. Real-world relevance increases engagement. Virtual format allows multimedia and collaborative work.' },
+  { id: 's23', title: 'Peer Critique & Feedback Protocols (Virtual)', dok: 4, subject: 'ELA', teacher: 'Teach structured feedback protocol: 1) Glow (What works well?), 2) Grow (What could improve?), 3) Goal (One specific next step?). Model in Engageli using think-aloud. Use in Engageli breakout peer reviews, Canvas peer review tool, or discussion threads. Provide frame document: "I appreciated how you... I was curious about... I wonder if you could..." Have students leave detailed written feedback.', why: 'Builds critical feedback skills, supports revision, normalizes constructive critique. Virtual format allows written, thoughtful feedback. Provides record of feedback received.' },
+  { id: 's24', title: 'Portfolio & Growth Reflection (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Have students collect best work over time in digital portfolio (Canvas portfolio, Google Site, Seesaw, or Notion). Include: artifacts (assignments, projects, links), reflections ("What I learned," "How I grew," "What challenged me"), goal-setting ("Next steps"). Review portfolio periodically in Engageli check-ins. Share with families via portfolio link or presentation. Celebrate growth throughout year.', why: 'Metacognition + self-assessment builds agency. Students see their own growth. Develops ownership of learning. Digital format makes sharing easy.' },
+  { id: 's4a', title: 'Design Thinking Project (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Use design thinking framework: Define problem → Research → Brainstorm → Prototype → Test → Iterate. Assign each phase as milestone in Canvas with submission requirements. Example: History students design solutions to historical problem (with modern context) using digital tools. Science students design apparatus or simulation to solve environmental problem. Have students present prototypes/designs in Engageli and gather peer feedback.', why: 'Real-world problem-solving framework. Builds innovation thinking. Develops iteration and improvement mindset. Virtual tools enable prototyping and simulation.' },
+  { id: 's4b', title: 'Research Project with Original Inquiry (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Student generates own research question (not teacher-provided topic) documented in Canvas. Student completes: literature review (using library databases), original analysis/data collection (surveys, interviews via Google Forms, simulations), findings, implications. Example: "How has social media changed teenage mental health in our community?" includes research review, digital surveys/interviews with peers, analysis in spreadsheet, proposal for improvement. Scaffold with Canvas milestones and check-ins via Engageli.', why: 'Authentic research builds independent scholarship skills. Student ownership increases motivation. Develops question-asking skills. Virtual tools enable surveys and data collection.' },
+  { id: 's4c', title: 'Interdisciplinary Project (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Project that requires thinking across disciplines in virtual environment. Example: Create campaign analyzing historical event (History) using economic data analysis in spreadsheet (Math), environmental impact assessment with simulation (Science), and persuasive digital media (ELA). Each subject contributes meaningfully. Assign milestones in Canvas for each discipline component. Have students present integrated project in Engageli or as digital presentation.', why: 'Forces transfer of learning across domains. Develops systems thinking. Reflects real-world complexity. Virtual format enables multimedia projects.' },
+  { id: 's4d', title: 'Presentation & Persuasion Project (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Create multimedia presentation defending position with evidence. Includes: digital design (slide deck, video recording, Canva poster), written argument (Canvas submission), spoken delivery (Engageli presentation or recorded video), Q&A handling (live Engageli session or discussion responses). Present to authentic audience if possible (classmates, virtual community members, policy makers via Zoom). Use Engageli for live presentation and feedback via polling and chat.', why: 'Public speaking + persuasion + multimedia synthesis. Develops communication skills. Authentic audience increases motivation. Virtual format enables recording and sharing.' },
+  { id: 's4e', title: 'Mentorship & Peer Teaching (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Advanced students teach concepts to peers or younger students. Create lesson plan (Canvas template), teach synchronously in Engageli breakout rooms or asynchronously via recorded video posted in Canvas. Mentor provides feedback on teaching (rubric provided). This deepens teaching students\' understanding while supporting peer learning. Can be formal (regular peer tutoring via Engageli) or informal (explain to classmate in breakout).', why: 'Teaching deepens learning; builds leadership. Peer connection supports struggling learners. Develops communication and explanation skills. Virtual format enables recorded sessions.' },
+  { id: 's4f', title: 'Innovation Proposal (Virtual)', dok: 4, subject: 'Math, ELA, Science, History, Government, Tech, PE, SPED, Academic Advisory, ELD', teacher: 'Students propose new solution to real problem documented in Canvas or as digital presentation. Includes: problem statement, background research (using digital sources), proposed solution (with feasibility analysis using tools/simulations), implementation plan, evaluation metrics. Example: "How could our school reduce food waste?" Includes research, proposed digital tracking system, cost analysis in spreadsheet, implementation steps, evaluation. Present to relevant stakeholders via Zoom or Canvas presentation.', why: 'Real-world relevance + authentic audience. Develops proposal-writing and persuasion skills. Potential for actual implementation. Virtual format enables broader stakeholder involvement.' }
 ];
 
 const videos = [
@@ -376,34 +733,136 @@ const assessments = [
 // ===== RENDER FUNCTIONS =====
 function renderScaffolds(filtered = scaffolds) {
   const container = document.getElementById('resourcesContainer');
-  container.innerHTML = filtered.map(s => `
-    <div class="resource-card" onclick="this.classList.toggle('open')">
-      <div class="card-header h${s.dok}">
-        <div>
-          <div class="card-title">${s.title}</div>
-          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-            <span class="badge subject">${s.subject}</span>
-            <span class="badge dok dok${s.dok}">DOK ${s.dok}</span>
+  
+  // Define resource mappings from original scaffold guide
+  const resourceMappings = {
+    'Breaking Down the Prompt': [
+      { label: '🎬 MTH INT-Peter Bither', url: 'https://drive.google.com/file/d/11m_CWn36xezmeaxuPuwAYDp6BuLSHZBv/view?usp=sharing' }
+    ],
+    'Think Aloud Modeling': [
+      { label: '🎬 MTH INT-Peter Bither', url: 'https://drive.google.com/file/d/1l6ulQXj90gmW5CCqUj2FAnqwKkIymJ35/view?usp=sharing' },
+      { label: '🎬 ELA-Cynthia Owen', url: 'https://drive.google.com/file/d/1A1VEfKLR3wkJ9z7mrXuvmGm8nwbxrL8d/view?usp=sharing' },
+      { label: '🎬 HST-Trevore Humphrey', url: 'https://youtu.be/FgnFrRkix4o?si=xDwAlOgTmYhiF7NT' }
+    ],
+    'Chunk Multi-Step Problems': [
+      { label: '🎬 MTH-Katy Ayesiga', url: 'https://drive.google.com/file/d/1hC6cAsQY6-AWi8S8vyYBXyVCCZDCpClN/view?usp=sharing' },
+      { label: '🎬 ELA-Madeline Pace', url: 'https://drive.google.com/file/d/17X7VQZ5cHj_0nxOV6kVSC3-4ugzT1z5Y/view?usp=sharing' },
+      { label: '📁 HST-Gabriell Villegas', url: 'https://drive.google.com/drive/folders/1B22SFSSIARIrtVhhfmP-6s0X3lezMh1e' }
+    ],
+    'Structured Graphic Organizers (Digital)': [
+      { label: '🎬 ELA-Madeline Pace', url: 'https://drive.google.com/file/d/1zHtj_yGZ3gGJT1OmH54iOgq3mKR8cEC7/view?usp=sharing' }
+    ],
+    'Provide Strategy Banks (Digital)': [
+      { label: '📄 Strategy Banks For Students', url: 'https://docs.google.com/document/d/1t_gmJI6XgNboFaJCGIGWFaccyebNQqaXPNsxgqNSzQE/copy' }
+    ],
+    'The DOK Ladder (Layered Questions)': [
+      { label: '📊 Math DOK Ladder', url: 'https://docs.google.com/presentation/d/1H9-Q83UAPMe9PQUS-jcIYfcoNwpvEEbaHNJv2p9y5nE/copy' }
+    ],
+    'Visual Representations in Math': [
+      { label: '🎬 MTH-Sho Nakamura', url: 'https://drive.google.com/file/d/1zu7KPh8Zs03pm0spOSQ5Zlb-x_PJId8H/view?usp=sharing' },
+      { label: '📊 ELA-Macbeth Character Chart', url: 'https://drive.google.com/file/d/1wRvDgiyETv84f7Vgnpes1sFsdgzbi-_b/view?usp=sharing' }
+    ],
+    'Sentence Frames (Digital)': [
+      { label: '📄 Argument Frames', url: 'https://drive.google.com/file/d/1xU1l3Au8V_JAF1_sPoiamzjmdB1rNImj/view?usp=drive_link' },
+      { label: '📄 Cause & Effect Frames', url: 'https://drive.google.com/file/d/1wPUTqKpC8d95sqy2LocJ4mqDoQTv9hPU/view?usp=sharing' },
+      { label: '📄 Compare/Contrast Frames', url: 'https://drive.google.com/file/d/1MUc0wlHdHyBF0ejasFnflIk1UrCgQozt/view?usp=sharing' },
+      { label: '📄 Research Frames', url: 'https://drive.google.com/file/d/1dGdXSF82yKtWXuqQbl2Ht3tE1m4S9KXN/view?usp=sharing' },
+      { label: '📄 Sequence Frames', url: 'https://drive.google.com/file/d/10ucbl9MK9RnYOk2FeXJa3XVjn8w1XKUW/view?usp=sharing' },
+      { label: '📄 Literary Analysis Frames', url: 'https://drive.google.com/file/d/1PbPeOxA6z3meJCfvF-xDyMg92ytp0IkZ/view?usp=sharing' }
+    ],
+    'Teach-Back / Explain-to-Someone-Else (Virtual)': [
+      { label: '🎬 ELA-Marsha Jackson', url: 'https://drive.google.com/file/d/1zfdmRQk8ASB5x_eMmEthDfk2CYvzLbOx/view?usp=sharing' },
+      { label: '🎬 HIST-Gabriel Villegas', url: 'https://drive.google.com/file/d/1Z7ujvXkihicH30-a75Viy1H6in1b1Wnq/view?usp=sharing' }
+    ],
+    'Pattern Recognition & Generalization (Virtual)': [
+      { label: '📄 Content-Based Examples', url: 'https://docs.google.com/document/d/1a-BhosKHdtsACwpbCbAuG3Smp9pe035wCOJROFvddUk/copy' }
+    ]
+  };
+  
+  // Strategy Anchors - apply to multiple scaffolds
+  const strategyAnchorResources = [
+    { label: '📄 Science Strategy Anchor', url: 'https://docs.google.com/document/d/1wgcRcGlo6PPL9yzRQN8yxquKCDaL0CtcrsG3FndOCI0/copy' },
+    { label: '📄 Math Strategy Anchor', url: 'https://docs.google.com/document/d/1j5O9mr9yjtwFdutEs0Ti_ICK4qYP_qVIKlfsJogbeGE/copy' },
+    { label: '📄 ELA Strategy Anchor', url: 'https://docs.google.com/document/d/1wfuh6_yGWiDiA6auDnXjt2i3hnKwwYfd1P3Yy9uUS74/copy' },
+    { label: '📄 History Strategy Anchor', url: 'https://docs.google.com/document/d/1X77bX0teUmSqAcjeagcdkjP4x7CKp_I74-fgprcPezY/copy' }
+  ];
+  
+  container.innerHTML = filtered.map(s => {
+    const preview = s.teacher.substring(0, 100) + (s.teacher.length > 100 ? '...' : '');
+    
+    // Find related video for this scaffold
+    const relatedVideo = videos.find(v => {
+      const scaffoldTitle = s.title.toLowerCase();
+      const videoTitle = v.title.toLowerCase();
+      
+      return scaffoldTitle.includes('ladder') && videoTitle.includes('ladder') ||
+             scaffoldTitle.includes('visual') && videoTitle.includes('visual') ||
+             scaffoldTitle.includes('breaking') && videoTitle.includes('breaking') ||
+             scaffoldTitle.includes('think aloud') && videoTitle.includes('think aloud') ||
+             scaffoldTitle.includes('chunk') && videoTitle.includes('chunk') ||
+             scaffoldTitle.includes('graphic organizer') && videoTitle.includes('graphic') ||
+             scaffoldTitle.includes('pair-share') && videoTitle.includes('pair-share') ||
+             scaffoldTitle.includes('jigsaw') && videoTitle.includes('jigsaw');
+    });
+    
+    // Get mapped resources
+    let allResources = [];
+    if (relatedVideo) {
+      allResources.push({ label: `🎬 ${relatedVideo.title}`, url: relatedVideo.url });
+    }
+    if (resourceMappings[s.title]) {
+      allResources.push(...resourceMappings[s.title]);
+    }
+    // Add strategy anchors for applicable scaffolds
+    if (s.title.includes('Strategy') || s.title.includes('Anchor')) {
+      allResources.push(...strategyAnchorResources);
+    }
+    
+    const resourcesSection = allResources.length > 0 ? `
+      <div class="scaffold-resources">
+        <div class="scaffold-resources-label">Resources</div>
+        ${allResources.map(r => `
+          <div class="scaffold-resource-item">
+            <a href="${r.url}" target="_blank">${r.label}</a>
+          </div>
+        `).join('')}
+      </div>
+    ` : '';
+    
+    return `
+      <div class="scaffold-card dok${s.dok}" onclick="this.querySelector('.scaffold-details').style.display = this.querySelector('.scaffold-details').style.display === 'none' ? 'block' : 'none'">
+        <div class="scaffold-card-header">
+          <div>
+            <div class="scaffold-title">${s.title}</div>
+            <div class="scaffold-meta">
+              <span class="scaffold-dok">DOK ${s.dok}</span>
+              <span class="scaffold-subject">${s.subject}</span>
+            </div>
           </div>
         </div>
-        <div class="card-toggle">▾</div>
+        <div class="scaffold-preview">${preview}</div>
+        <div class="scaffold-expand">Learn more →</div>
+        
+        <div class="scaffold-details" style="display: none;">
+          <h4>How to Implement</h4>
+          <p>${s.teacher}</p>
+          
+          <h4>Why This Works</h4>
+          <p>${s.why}</p>
+          ${resourcesSection}
+        </div>
       </div>
-      <div class="card-body">
-        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary);">How to Implement</div>
-        <div class="content-text">${s.teacher}</div>
-        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary); margin-top: 0.75rem;">Why This Works</div>
-        <div class="why-box">${s.why}</div>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
   
   document.getElementById('noResults').style.display = filtered.length === 0 ? 'block' : 'none';
+  document.getElementById('scaffoldCount').textContent = filtered.length;
 }
 
 function performSearch() {
   const query = document.getElementById('searchBox').value.toLowerCase().trim();
-  const subjectFilter = document.querySelector('[data-filter="subject"].active')?.dataset.value || 'all';
-  const dokFilter = document.querySelector('[data-filter="dok"].active')?.dataset.value || 'all';
+  const subjectFilter = document.getElementById('subjectFilter').value;
+  const dokFilter = document.getElementById('dokFilter').value;
   
   let filtered = scaffolds;
   
@@ -415,11 +874,11 @@ function performSearch() {
     );
   }
   
-  if (subjectFilter !== 'all') {
-    filtered = filtered.filter(s => s.subject === subjectFilter);
+  if (subjectFilter) {
+    filtered = filtered.filter(s => s.subject.includes(subjectFilter));
   }
   
-  if (dokFilter !== 'all') {
+  if (dokFilter) {
     filtered = filtered.filter(s => s.dok === parseInt(dokFilter));
   }
   
